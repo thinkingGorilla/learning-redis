@@ -2,6 +2,7 @@ import 'package:learning_redis/redis_conn_factory.dart';
 
 void main(List<String> arguments) async {
   final command = await connectRedis(host: 'localhost', port: 6379);
+  await command.send_object(['FLUSHALL']);
 
   await command.send_object(['HSET', 'user:1000', 'name', 'Alice']);
   await command.send_object(['HSET', 'user:1000', 'email', 'alice@example.com', 'age', 25]);
